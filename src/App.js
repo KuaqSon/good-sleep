@@ -31,7 +31,7 @@ class App extends Component {
     });
 
     this.setState({
-      wakeupTime: times[3] || "",
+      wakeupTime: times.pop() || "",
       wakeupTimeResults: times
     });
   };
@@ -46,22 +46,20 @@ class App extends Component {
     });
 
     this.setState({
-      sleepTime: times[3] || "",
+      sleepTime: times.pop() || "",
       sleepTimeResults: times
     });
   };
 
   handleSleepTimeChange = time => {
-    const { hour24, minute } = time;
     this.setState({
-      sleepTime: `${hour24}:${minute}`
+      sleepTime: time.formatted24
     });
   };
 
   handleWakeupTimeChange = time => {
-    const { hour24, minute } = time;
     this.setState({
-      wakeupTime: `${hour24}:${minute}`
+      wakeupTime: time.formatted24
     });
   };
 
@@ -118,12 +116,15 @@ class App extends Component {
             </div>
             <div className="time-metric">{sleepTime}</div>
             {sleepTimeResults && sleepTimeResults.length > 0 && (
-              <div className="time-result">
-                {sleepTimeResults.map(x => (
-                  <div key={x} className="time-result-item">
-                    {x}
-                  </div>
-                ))}
+              <div className="result-section">
+                <div className="result-desc">Or go to bed later at</div>
+                <div className="time-result">
+                  {sleepTimeResults.map(x => (
+                    <div key={x} className="time-result-item">
+                      {x}
+                    </div>
+                  ))}
+                </div>
               </div>
             )}
           </div>
@@ -143,12 +144,15 @@ class App extends Component {
             </div>
             <div className="time-metric">{wakeupTime}</div>
             {wakeupTimeResults && wakeupTimeResults.length > 0 && (
-              <div className="time-result">
-                {wakeupTimeResults.map(x => (
-                  <div key={x} className="time-result-item">
-                    {x}
-                  </div>
-                ))}
+              <div className="result-section">
+                <div className="result-desc">Or wake up earlier at</div>
+                <div className="time-result">
+                  {wakeupTimeResults.map(x => (
+                    <div key={x} className="time-result-item">
+                      {x}
+                    </div>
+                  ))}
+                </div>
               </div>
             )}
           </div>
