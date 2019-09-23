@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/good-sleep/precache-manifest.d7be80f0077ca11ae781c9fb10461c20.js"
+  "/good-sleep/precache-manifest.91adb90d7066c8e0a72a993901e41348.js"
 );
 
 self.addEventListener('message', (event) => {
